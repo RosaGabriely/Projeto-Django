@@ -8,4 +8,4 @@ class LoginForm(forms.Form):
 class EventoForm(forms.ModelForm):
      class Meta:
           model = Evento
-          fields = ['nome', 'descricao', 'hora_inicio', 'hora_fim', 'data']
+          fields = ['nome', 'descricao', 'hora_inicio', 'hora_fim', 'data', 'local']
