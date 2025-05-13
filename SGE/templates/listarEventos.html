@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Eventos</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Eventos Cadastrados</h2>
+
+        <a href="{% url 'cadEvento' %}" class="btn btn-success mb-3">+ Novo Evento</a>
+
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Hora Inicio</th>
+                    <th>Hora Fim</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eventos in eventos %}
+                <tr>
+                    <td>{{ evento.id_nome}}</td>
+                    <td>{{ evento.descricao }}</td>
+                    <td>{{ evento.horaInicio }}</td>
+                    <td>{{ evento.horaFim }}</td>
+                    <td>{{ evento.data }}</td>
+                    <td>{{ evento.local }}</td>
+                        <a href="{% url 'editarEvento' evento.id %}" class="btn btn-warning btn-sm me-1">Editar</a>
+                        <a href="{% url 'excluirEvento' evento.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">Nenhum evento cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
