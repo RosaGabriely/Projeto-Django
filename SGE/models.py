@@ -11,11 +11,11 @@ class Local(models.Model):
     
 class Evento(models.Model):
         nome = models.CharField(max_length=255)
-        descricao = models.TextField(max_length=120)
+        descricao = models.TextField(max_length=80)
         data = models.DateField()
-        hora_inicio = models.TimeField()
-        hora_fim = models.TimeField()
-        local = models.ForeignKey(Local, on_delete=models.CASCADE) #faz uma ligação com a tabela Local
+        horaInicio = models.TimeField()
+        horaFim = models.TimeField()
+        local = models.CharField(max_length=100)
     
 class Participante(models.Model):
      nome = models.CharField(max_length=255)

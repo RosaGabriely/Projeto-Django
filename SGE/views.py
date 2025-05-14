@@ -17,9 +17,9 @@ def loginView(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, email=email, password=password)
             if user:
                 login(request, user)
                 return redirect('')
@@ -38,7 +38,7 @@ def cadEvento(request):
             form.save()
             sucesso = True
             form = EventoForm()
-            return redirect('home')
+            return redirect('listarEventos')
     else:
         form = EventoForm()
 
