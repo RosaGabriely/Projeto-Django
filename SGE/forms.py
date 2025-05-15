@@ -1,5 +1,6 @@
 from django import forms
 from .models import Evento
+from .models import Participante
 
 class LoginForm(forms.Form):
      email = forms.CharField(label='Usuário', max_length=150)
@@ -14,3 +15,8 @@ class EventoForm(forms.ModelForm):
             'horaFim': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
             'data': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
+          
+class ParticipanteForm(forms.ModelForm):
+     class Meta:
+          model = Participante
+          fields = ['nome', 'email', 'telefone']

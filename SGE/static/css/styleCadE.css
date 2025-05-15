@@ -1,0 +1,11 @@
+/* Espaçamento acima do título */
+h2 {
+    margin-top: 40px !important;
+}
+
+/* Força o campo de descrição a ter mesma altura dos outros campos */
+textarea.form-control {
+    height: 38px !important;
+    resize: none !important;
+    overflow: hidden !important;
+}

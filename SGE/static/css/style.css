@@ -11,7 +11,7 @@ body {
 
 /* Container do formulário */
 .form-container {
-    background: rgb(205, 185, 185);
+    background: white;
     padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -26,25 +26,22 @@ body {
     color: #333;
 }
 
-textarea {
-    height: 38px !important; /* altura igual aos inputs */
-    resize: none !important; /* impede redimensionamento */
-    overflow: hidden;
-}
-
 /* Estilo dos campos */
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
+input[type="time"],
 textarea,
 select {
-    width: 80%;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     margin: 8px 0 16px;
-    border: 1px solid #fbfafa;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
 }
 
 /* Botão */
@@ -52,7 +49,7 @@ button,
 input[type="submit"] {
     width: 100%;
     background-color: #4CAF50;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 12px;
     border: none;
     border-radius: 4px;
@@ -72,4 +69,3 @@ input[type="submit"]:hover {
     padding: 0;
     font-size: 14px;
 }
-

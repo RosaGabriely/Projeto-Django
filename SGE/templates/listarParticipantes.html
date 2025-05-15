@@ -9,8 +9,8 @@
 <body class="bg-light">
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-center w-100 text">Eventos Cadastrados</h2>
-            <a href="{% url 'cadEvento' %}" class="btn btn-primary">+ Novo Evento</a>
+            <h2 class="text-center w-100 text">Participante Cadastrados</h2>
+            <a href="{% url 'cadParticipante' %}" class="btn btn-primary">+ Novo Participante</a>
         </div>
 
         <div class="card shadow-sm rounded-4">
@@ -21,11 +21,8 @@
                         <thead class="table-light">
                             <tr>
                                 <th>Nome</th>
-                                <th>Descrição</th>
-                                <th>Hora Início</th>
-                                <th>Hora Fim</th>
-                                <th>Data</th>
-                                <th>Local</th>
+                                <th>E-Mail</th>
+                                <th>Telefone</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -33,14 +30,11 @@
                             {% for evento in eventos %}
                             <tr>
                                 <td>{{ evento.nome }}</td>
-                                <td>{{ evento.descricao }}</td>
-                                <td>{{ evento.horaInicio }}</td>
-                                <td>{{ evento.horaFim }}</td>
-                                <td>{{ evento.data|date:"d/m/Y" }}</td>
-                                <td>{{ evento.local }}</td>
+                                <td>{{ evento.email }}</td>
+                                <td>{{ evento.telefone}}</td>
                                 <td>
-                                    <a href="{% url 'editarEvento' evento.id %}" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="{% url 'excluirEvento' evento.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    <a href="{% url 'editarParticipante' evento.id %}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="{% url 'excluirParticipante' evento.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -48,7 +42,7 @@
                     </table>
                 </div>
                 {% else %}
-                <p class="text-center text-muted m-0">Nenhum evento cadastrado.</p>
+                <p class="text-center text-muted m-0">Nenhum participante cadastrado.</p>
                 {% endif %}
             </div>
         </div>

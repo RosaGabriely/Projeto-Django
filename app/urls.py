@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SGE.views import index, loginView, cadEvento, excluirEvento,editarEvento,listarEventos
+from SGE.views import index, loginView, cadEvento, excluirEvento,editarEvento,listarEventos, cadParticipante, listarParticipante,excluirParticipante,editarParticipante
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +25,11 @@ urlpatterns = [
     path('cadastro/', cadEvento, name='cadEvento'),
     path('excluir/<int:id>/', excluirEvento, name='excluirEvento'),
     path('editar/<int:id>/', editarEvento, name='editarEvento'),
-    path('listagem', listarEventos, name='listarEventos'),
+    path('listarEventos', listarEventos, name='listarEventos'),
+    path('cadastroParticipante/', cadParticipante, name='cadParticipante'),
+    path('listarParticipante',listarParticipante, name='listarParticipante'),
+    path('excluir/<int:id>/', excluirParticipante, name='excluirParticipante'),
+    path('editar/<int:id>/', editarParticipante, name='editarParticipante'),
     
 
 ]
