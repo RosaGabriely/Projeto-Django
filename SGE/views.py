@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Evento
 from .forms import ParticipanteForm
 from .models import Participante
+from .forms import Localform
+from .models import Local
 
 #Imports Cadastro
 from .forms import EventoForm
@@ -67,7 +69,8 @@ def editarEvento(request, id):
     
     return render(request, 'cadEvento.html', {'form': form, 'editando': True})
 
-        #####PARTICIPANTE 
+
+        ##### PARTICIPANTE 
 def cadParticipante(request):
     sucesso = False
     if request.method == 'POST':
@@ -82,8 +85,8 @@ def cadParticipante(request):
     return render(request, 'cadParticipante.html', {'form': form, 'sucesso': sucesso})
     
 def listarParticipante(request):
-    participante = Participante.objects.all()
-    return render(request, 'listarParticipante.html', {'participante': participante})
+    participantes = Participante.objects.all()
+    return render(request, 'listarParticipante.html', {'participantes': participantes})
 
 def excluirParticipante(request, id):
     participante = get_object_or_404(Participante, id=id)
@@ -102,7 +105,40 @@ def editarParticipante(request, id):
     
     return render(request, 'cadParticipante.html', {'form': form, 'editando': True})
 
+
+  ##### LOCAL
+
+def cadLocal(request):
+    sucesso = False
+    if request.method == 'POST':
+        form = Localform(request.POST)
+        if form.is_valid():
+            form.save()
+            sucesso = True
+            return redirect('listarLocal')
+    else:
+        form = Localform()
+
+    return render(request, 'cadLocal.html', {'form': form, 'sucesso': sucesso})
     
 
+def listarLocal(request, id):
+    locais = Local.objects.all()
+    return render(request, 'listarLocal.html', {'locais' : locais})
 
-    
+def excluirLocal(request, id):
+    local = get_object_or_404(Local, id=id)
+    local.delete()
+    return redirect('listarLocal')
+
+def editarLocal(request):
+    local = get_object_or_404(Local, id = id)
+    if request.method == 'POST':
+        form = Localform(request.POST, instance=local)
+        if form.is_valid():
+            form.save()
+            return redirect('listarLocal')
+    else:
+        form = Localform(instance=local)
+
+    return render(request, 'cadLocal.html', {'form':form, 'editando': True})

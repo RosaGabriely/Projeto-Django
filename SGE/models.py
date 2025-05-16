@@ -2,7 +2,7 @@ from django.db import models
 from django import forms
 
 class Local(models.Model):
-    nome = models.CharField(max_length=255)
+    nomeL = models.CharField(max_length=255)
     endereco = models.CharField(max_length=255)
     capacidade = models.IntegerField()
 
@@ -20,7 +20,7 @@ class Evento(models.Model):
 class Participante(models.Model):
      nome = models.CharField(max_length=255)
      email = models.EmailField()
-     telefone = models.CharField(max_length=20)
+     telefone = models.CharField(max_length=15)
 
 class Inscricao(models.Model):
      evento = models.ForeignKey(Evento, on_delete=models.CASCADE)

@@ -15,7 +15,7 @@
 
         <div class="card shadow-sm rounded-4">
             <div class="card-body">
-                {% if eventos %}
+                {% if participantes %}
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center align-middle">
                         <thead class="table-light">
@@ -27,14 +27,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for evento in eventos %}
+                            {% for participante in participantes %}
                             <tr>
-                                <td>{{ evento.nome }}</td>
-                                <td>{{ evento.email }}</td>
-                                <td>{{ evento.telefone}}</td>
+                                <td>{{ participante.nome }}</td>
+                                <td>{{ participante.email }}</td>
+                                <td>{{ participante.telefone}}</td>
+
                                 <td>
-                                    <a href="{% url 'editarParticipante' evento.id %}" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="{% url 'excluirParticipante' evento.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    <a href="{% url 'editarPart' participante.id %}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="{% url 'excluirPart' participante.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                                 </td>
                             </tr>
                             {% endfor %}

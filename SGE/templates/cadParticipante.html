@@ -14,7 +14,7 @@
     <div class="container mt-8">
 
         {% if sucesso %}
-            <div class="alert alert-sucess">Participante salvo com sucesso!</div>
+            <div class="alert alert-success">Participante salvo com sucesso!</div>
         {% endif %}
 
         {% if editando %}
@@ -38,14 +38,27 @@
 
             <div class="mb-3">
                 <label for="{{ form.telefone.id_for_label }}" class="form-label">Telefone</label>
-                {% render_field form.telefone class="form-control" %}
+                {% render_field form.telefone class="form-control" id="id_telefone" %}
+                
             </div>
 
             <button type="submit" class="btn btn-primary">
-                {% if editando %}Atualizar{% else %}Salvar{% endif %}
+                {% if editando %} Atualizar{% else %} Salvar{% endif %}
             </button>
             <a href="{% url 'listarParticipante'%}" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
+
+
+
+<!--CODIGO DA MASCARA DO TELEFONE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/jquery.inputmask.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#id_telefone').inputmask('(99) 99999-9999', {"placeholder":"(__) _____-____"});
+    });
+</script>
 </body>
 </html>

@@ -16,20 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SGE.views import index, loginView, cadEvento, excluirEvento,editarEvento,listarEventos, cadParticipante, listarParticipante,excluirParticipante,editarParticipante
+from SGE.views import index, loginView, cadEvento, excluirEvento, editarEvento,listarEventos, cadParticipante, listarParticipante, excluirParticipante, editarParticipante, cadLocal, excluirLocal, editarLocal, listarLocal
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', loginView, name='login'),
     path('home', index, name='home'),
+
+    #Eventos
     path('cadastro/', cadEvento, name='cadEvento'),
     path('excluir/<int:id>/', excluirEvento, name='excluirEvento'),
     path('editar/<int:id>/', editarEvento, name='editarEvento'),
     path('listarEventos', listarEventos, name='listarEventos'),
+
+    #Participantes
     path('cadastroParticipante/', cadParticipante, name='cadParticipante'),
+    path('excluirPart/<int:id>/', excluirParticipante, name='excluirParticipante'),
+    path('editarPart/<int:id>/', editarParticipante, name='editarParticipante'),
     path('listarParticipante',listarParticipante, name='listarParticipante'),
-    path('excluir/<int:id>/', excluirParticipante, name='excluirParticipante'),
-    path('editar/<int:id>/', editarParticipante, name='editarParticipante'),
+
+    #Local
+    path('cadLocal', cadLocal, name='cadLocal'),
+    path('excluir/<int:id>/', excluirLocal, name='excluirLocal'),
+    path('editar/<int:id>/', editarLocal, name='editarLocal'),
+    path('listarLocal', listarLocal, name='listarLocal'),
     
 
 ]
