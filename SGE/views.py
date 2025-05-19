@@ -4,6 +4,7 @@ from .forms import ParticipanteForm
 from .models import Participante
 from .forms import Localform
 from .models import Local
+from django.contrib.auth import logout
 
 #Imports Cadastro
 from .forms import EventoForm
@@ -13,9 +14,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 
-def index(request):
-    eventos = Evento.objects.all()
-    return render(request, 'index.html', {'eventos': eventos})
+def inicio(request):
+    return render(request, 'telaPrincipal.html')
 
 def loginView(request):
     if request.method == 'POST':
@@ -122,7 +122,7 @@ def cadLocal(request):
     return render(request, 'cadLocal.html', {'form': form, 'sucesso': sucesso})
     
 
-def listarLocal(request, id):
+def listarLocal(request):
     locais = Local.objects.all()
     return render(request, 'listarLocal.html', {'locais' : locais})
 
@@ -142,3 +142,9 @@ def editarLocal(request):
         form = Localform(instance=local)
 
     return render(request, 'cadLocal.html', {'form':form, 'editando': True})
+
+#logout NavBar
+
+def logoutView(request):
+    logout(request)
+    return redirect('login')

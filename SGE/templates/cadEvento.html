@@ -11,6 +11,46 @@
     
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm py-3" style="background-color: #e0f0ff;" >
+    <div class="container-fluid justify-content-between">
+        <a class="navbar-brand fs-4 fw-bold" href="{% url 'inicio' %}">
+            <i class="bi bi-calendar-event"></i> EventosFlower - Organizador
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listarEventos' %}">
+                        <i class="bi bi-calendar3"></i> Eventos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listarParticipante' %}">
+                        <i class="bi bi-people-fill"></i> Participantes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'listarLocal' %}">
+                        <i class="bi bi-geo-alt-fill"></i> Locais
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger fs-5" href="{% url 'logout' %}">
+                        <i class="bi bi-box-arrow-right"></i> Sair
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
     <div class="container mt-8">
 
         {% if sucesso %}

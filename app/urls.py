@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SGE.views import index, loginView, cadEvento, excluirEvento, editarEvento,listarEventos, cadParticipante, listarParticipante, excluirParticipante, editarParticipante, cadLocal, excluirLocal, editarLocal, listarLocal
+from SGE.views import ( 
+    inicio, loginView, cadEvento, excluirEvento, editarEvento,listarEventos,
+    cadParticipante, listarParticipante, excluirParticipante, editarParticipante,
+    cadLocal, excluirLocal, editarLocal, listarLocal,
+    logoutView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', loginView, name='login'),
-    path('home', index, name='home'),
+    path('', inicio, name='inicio'),
 
     #Eventos
     path('cadastro/', cadEvento, name='cadEvento'),
@@ -41,6 +46,8 @@ urlpatterns = [
     path('editar/<int:id>/', editarLocal, name='editarLocal'),
     path('listarLocal', listarLocal, name='listarLocal'),
     
+    #NavBar
+    path('logout/', logoutView, name='logout'),
 
 ]
 
