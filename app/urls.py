@@ -20,13 +20,14 @@ from SGE.views import (
     inicio, loginView, cadEvento, excluirEvento, editarEvento,listarEventos,
     cadParticipante, listarParticipante, excluirParticipante, editarParticipante,
     cadLocal, excluirLocal, editarLocal, listarLocal,
-    logoutView
+    logoutView, registerView
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', loginView, name='login'),
-    path('', inicio, name='inicio'),
+    path('', loginView, name='login'),
+    path('inicio', inicio, name='inicio'),
+    path('registro/', registerView, name="registerView"),
 
     #Eventos
     path('cadastro/', cadEvento, name='cadEvento'),
@@ -42,8 +43,8 @@ urlpatterns = [
 
     #Local
     path('cadLocal', cadLocal, name='cadLocal'),
-    path('excluir/<int:id>/', excluirLocal, name='excluirLocal'),
-    path('editar/<int:id>/', editarLocal, name='editarLocal'),
+    path('excluirLocal/<int:id>/', excluirLocal, name='excluirLocal'),
+    path('editarLocal/<int:id>/', editarLocal, name='editarLocal'),
     path('listarLocal', listarLocal, name='listarLocal'),
     
     #NavBar

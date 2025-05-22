@@ -8,31 +8,54 @@ from django.contrib.auth import logout
 
 #Imports Cadastro
 from .forms import EventoForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Evento
+from .forms import ParticipanteForm
+from .models import Participante
+from .forms import Localform
+from .models import Local
+from django.contrib.auth import logout
+
+#Imports Cadastro
+from .forms import EventoForm
 
 #Imports Login
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+
+
 
 def inicio(request):
     return render(request, 'telaPrincipal.html')
 
+def registerView(request):
+    if request.method == 'POST':
+        user_form = UserCreationForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('login')
+    else:
+        user_form = UserCreationForm()
+
+    return render(request, 'registro.html', {'user_form': user_form})
+
+
 def loginView(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
-            if user:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
                 login(request, user)
-                return redirect('')
-            else:
-                form.add_error(None, 'Usuário ou senha inválidos')
+                return redirect('inicio')
+        else:
+                LoginForm = AuthenticationForm()
     else:
-        form = LoginForm()
-
-    return render(request, 'login.html', {'form': form})
+        LoginForm = AuthenticationForm()
+    return render(request, 'login.html', {'LoginForm': LoginForm})
 
 def cadEvento(request):
     sucesso = False
@@ -131,7 +154,7 @@ def excluirLocal(request, id):
     local.delete()
     return redirect('listarLocal')
 
-def editarLocal(request):
+def editarLocal(request, id):
     local = get_object_or_404(Local, id = id)
     if request.method == 'POST':
         form = Localform(request.POST, instance=local)
